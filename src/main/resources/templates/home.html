@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="/styles.css" rel="stylesheet" type="text/css"/>
+    <script src="/scripts.js"></script>
+</head>
+<body>
+    <div class="container outer">
+        <div class="panel-body inf-content">
+            <div class="row">
+                <div class="col-md-4">
+                    <img alt="" style="width:600px;" title="" class="img-circle img-thumbnail isTooltip" src="https://bootdey.com/img/Content/avatar/avatar7.png" data-original-title="Usuario">
+                </div>
+                <div class="col-md-6">
+                    <strong>Information</strong><br>
+                    <form th:action="@{/Edit}" method="post" th:object="${newEmployee}">
+                        <div class="table-responsive">
+                            <table class="table table-user-information">
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <strong>
+                                            <span class="glyphicon glyphicon-asterisk text-primary"></span>
+                                            ID
+                                        </strong>
+                                    </td>
+                                    <td class="text-primary">
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" th:value="${newEmployee.id}" name="id"/>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>
+                                            <span class="glyphicon glyphicon-user  text-primary"></span>
+                                            First Name
+                                        </strong>
+                                    </td>
+                                    <td class="text-primary">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" th:value="${newEmployee.firstName}" name="firstName"/>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>
+                                            <span class="glyphicon glyphicon-cloud text-primary"></span>
+                                            Last Name
+                                        </strong>
+                                    </td>
+                                    <td class="text-primary">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" th:value="${newEmployee.lastName}" name="lastName"/>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <strong>
+                                            <span class="glyphicon glyphicon-bookmark text-primary"></span>
+                                            Email
+                                        </strong>
+                                    </td>
+                                    <td class="text-primary">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" th:value="${newEmployee.email}" name="email"/>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>
+                                            <span class="glyphicon glyphicon-eye-open text-primary"></span>
+                                            Title
+                                        </strong>
+                                    </td>
+                                    <td class="text-primary">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" th:value="${newEmployee.title}" name="title"/>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>
+                                            <span class="glyphicon glyphicon-envelope text-primary"></span>
+                                            Department
+                                        </strong>
+                                    </td>
+                                    <td class="text-primary">
+                                        <div class="form-group">
+                                            <select class="form-control" name="department">
+                                                <option th:value="${newEmployee.department.id}" th:text="${newEmployee.department.name}" selected></option>
+                                                <option th:each="department: ${departments}" th:value="${department.id}" th:text="${department.name}" value="" />
+                                            </select>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+<!--                        <div class="form-group">-->
+<!--                            <button type="button" class="btn btn-success">Save</button>-->
+<!--                        </div>-->
+                        <div class="form-group">
+                            <button class="btnSubmit" type="submit">Save</button>
+                        </div>
+                    </form>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-danger">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

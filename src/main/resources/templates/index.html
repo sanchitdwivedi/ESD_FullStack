@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Registration</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="/styles.css" rel="stylesheet" type="text/css"/>
+    <script src="/scripts.js"></script>
+</head>
+<body>
+    <div class="container login-container">
+        <div class="row">
+            <div class="col-md-6 login-form-1">
+                <h3>Signup</h3>
+                <form th:action="@{/Signup}" method="post" th:object="${employee}">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Email *" th:field="${employee.email}" required/>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Password *" th:field="${employee.password}" required/>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name *" th:field="${employee.firstName}" required/>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Last Name" th:field="${employee.lastName}" value="" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Title" th:field="${employee.title}" value="" />
+                    </div>
+                    <div class="form-group" style="color: white">
+                        <label for="photo">Upload photograph</label>
+                        <input type="file" class="form-control-file" id="photo">
+                    </div>
+                    <div class="form-group" style="color: white">
+                        <select id="department" class="form-control" th:field="${employee.department}" required>
+                            <option value="0" selected>Select Department</option>
+                            <option th:each="department: ${departments}" th:value="${department.id}" th:text="${department.name}" value="" />
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button class="btnSubmit" type="submit">Signup</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-6 login-form-2">
+                <div class="login-logo">
+                    <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
+                </div>
+                    <h3>Login</h3>
+                    <form th:action="@{/Login}" method="post" th:object="${employee}">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your Email *" th:field="${employee.email}" required/>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Your Password *" th:field="${employee.password}" required/>
+                        </div>
+                        <div class="form-group">
+                            <button class="btnSubmit" type="submit">Login</button>
+                        </div>
+                        <div class="form-group">
+                            <a href="#" class="btnForgetPwd">Forget Password?</a>
+                        </div>
+                    </form>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
