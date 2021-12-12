@@ -86,7 +86,8 @@ public class Employee {
     }
 
     public String getPhotoPath() {
-        return photoPath;
+//        return "/user-photos/" + this.id + "/" + this.photoPath;
+        return this.photoPath;
     }
 
     public void setPhotoPath(String photoPath) {

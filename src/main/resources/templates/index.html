@@ -11,11 +11,14 @@
     <script src="/scripts.js"></script>
 </head>
 <body>
+<div class="container" style="opacity: 0.75;">
+    <div style="margin-top: 50px" th:if="${success}" role="alert" class="alert alert-success" th:text="${success}"></div>
+    <div style="margin-top: 50px" th:if="${failed}" role="alert" class="alert alert-danger" th:text="${failed}"></div>
     <div class="container login-container">
         <div class="row">
             <div class="col-md-6 login-form-1">
                 <h3>Signup</h3>
-                <form th:action="@{/Signup}" method="post" th:object="${employee}">
+                <form th:action="@{/Signup}" method="post" th:object="${employee}" enctype="multipart/form-data">
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Email *" th:field="${employee.email}" required/>
                     </div>
@@ -33,7 +36,7 @@
                     </div>
                     <div class="form-group" style="color: white">
                         <label for="photo">Upload photograph</label>
-                        <input type="file" class="form-control-file" id="photo">
+                        <input type="file" name="image" class="form-control-file" id="photo" accept="image/png, image/jpeg">
                     </div>
                     <div class="form-group" style="color: white">
                         <select id="department" class="form-control" th:field="${employee.department}" required>
@@ -47,9 +50,6 @@
                 </form>
             </div>
             <div class="col-md-6 login-form-2">
-                <div class="login-logo">
-                    <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
-                </div>
                     <h3>Login</h3>
                     <form th:action="@{/Login}" method="post" th:object="${employee}">
                         <div class="form-group">
@@ -61,13 +61,11 @@
                         <div class="form-group">
                             <button class="btnSubmit" type="submit">Login</button>
                         </div>
-                        <div class="form-group">
-                            <a href="#" class="btnForgetPwd">Forget Password?</a>
-                        </div>
                     </form>
                 </div>
             </form>
         </div>
     </div>
+</div>
 </body>
 </html>

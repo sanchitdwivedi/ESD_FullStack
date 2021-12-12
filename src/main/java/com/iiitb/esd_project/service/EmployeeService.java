@@ -12,8 +12,8 @@ import java.util.Optional;
 public class EmployeeService {
     @Autowired private EmployeeDAO empDao;
 
-    public void addEmployee(Employee emp){
-        empDao.save(emp);
+    public Employee addEmployee(Employee emp){
+        return empDao.save(emp);
     }
 
     public boolean validateEmployeeByID(Integer id){
@@ -26,5 +26,14 @@ public class EmployeeService {
 
     public Optional<Employee> getEmployeeByID(Integer id){
         return empDao.findById(id);
+    }
+
+    public void updateId(Integer id, String email){
+        empDao.updateId(id, email);
+    }
+
+    public void updateEmployee(Integer id, Employee emp){
+        empDao.updateEmployee(id, emp.getPhotoPath(), emp.getTitle(), emp.getLastName(), emp.getFirstName(),
+                emp.getEmail(), emp.getPassword(), emp.getDepartment());
     }
 }
